@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Start -->
+<div class="container-fluid bg-primary py-5 hero-header mb-5">
+    <div class="row py-3">
+        <div class="col-12 text-center">
+            <h1 class="display-3 text-white animated zoomIn">Appointment</h1>
+            <a href="" class="h4 text-white">Home</a>
+            <i class="far fa-circle text-white px-2"></i>
+            <a href="" class="h4 text-white">Appointment</a>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+
+
+<!-- Team Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.1s">
+                <div class="section-title bg-light rounded h-100 p-5">
+                    <h5 class="position-relative d-inline-block text-primary text-uppercase">My Appointments</h5>
+                    <h1 class="display-6 mb-4">AppointMent History</h1>
+                    <!-- <a href="#" class="btn btn-primary py-3 px-5">Appointment</a> -->
+                </div>
+            </div>
+           
+            {% for appointment in appointments %}
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="team-item">
+                        <div class="position-relative rounded-top" style="z-index: 1;">
+                            <!-- <img class="img-fluid rounded-top w-100" src="#" alt=""> -->
+                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
+
+                                <a class="btn btn-info btn-square m-1" href="{{url_for('doctors.doctors_thread', id=appointment.patient_user_id)}}"><i class="fa fa-close fw-normal"></i></a>
+                                <!-- <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a> -->
+                            </div>
+                        </div>
+                        <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
+                            <h4 class="mb-2">Service: {{appointment.service}}</h4>
+                            <h5 class="text-primary mb-2">PAtient:  {{appointment.patient}}</h5>
+
+                            <!-- <h6 class="text-primary mb-0">Department:  {{appointment.department}}</h6> -->
+
+
+                            <h4 class="mb-2">Date: {{appointment.appointment_date}}</h4>
+                            <p class="text-primary mb-0">Time: {{appointment.appointment_time}}</p>
+
+                            <p class="text-primary mb-0">ID:  {{appointment.id}}</p>
+
+                            {% if appointment.status == "pending" %}
+                            <h4 class="text-secondary mb-2">Status:  {{appointment.status}}</h4>
+                            {% endif %}
+
+                            {% if appointment.status == "accepted" %}
+                            <h4 class="text-success mb-2">Status:  {{appointment.status}}</h4>
+                            {% endif %}
+
+                            {% if appointment.status == "rejected" %}
+                            <h4 class="text-warning mb-2">Status:  {{appointment.status}}</h4>
+                            {% endif %}
+
+                            {% if appointment.status == "deleted" %}
+                            <h4 class="text-danger mb-2">Status:  {{appointment.status}}</h4>
+                            {% endif %}
+
+
+
+                        </div>
+
+                        <div class="position-relative rounded-top" style="z-index: 1;">
+                            <!-- <img class="img-fluid rounded-top w-100" src="#" alt=""> -->
+                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
+
+                                <a class="btn btn-info  m-1" href="{{url_for('appointment.doctor_pend', id=appointment.id)}}">pend</a>
+                                <a class="btn btn-success  m-1" href="{{url_for('appointment.doctor_accept', id=appointment.id)}}">Accept</a>
+                                <a class="btn btn-warning  m-1" href="{{url_for('appointment.doctor_reject', id=appointment.id)}}">reject</a>
+                                <a class="btn btn-danger  m-1" href="{{url_for('appointment.doctor_delete', id=appointment.id)}}">delete</a>
+
+                                <!-- <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+         
+ 
+            
+
+
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+{% endblock %}

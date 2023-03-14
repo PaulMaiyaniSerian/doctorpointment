@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- {% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+    </div>
+{% endif %}
+{% endwith %} -->
+
+
+
+
+
+<div class="wrapper">
+    <div class="form-left">
+        <h2 class="text-uppercase">Bio information</h2>
+        {% if doctor %}
+
+        <p>
+            <img src="{{doctor.get_img()}}" alt="no_img">
+            <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo. -->
+        </p>
+        <p class="text">
+            <span>BIO:</span>
+            {{doctor.bio}}
+        </p>
+        {% endif %}
+
+        <!-- <div class="form-field">
+            <input type="submit" class="account" value="Have an Account?">
+        </div> -->
+    </div>
+    <form class="form-right" method="POST" action="{{url_for("main.profile_post")}}">
+        <h2 class="text-uppercase">Update Profile</h2>
+        <div class="row">
+            <div class="col-sm-6 mb-3">
+                <label>First Name</label>
+                <input type="text" name="first_name" id="first_name"  class="input-field" value="{{user.first_name}}">
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label>Last Name</label>
+                <input type="text" name="last_name" id="last_name" class="input-field" value="{{user.last_name}}">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Your Email</label>
+            <input type="email" class="input-field" name="email" required value="{{user.email}}">
+        </div>
+        <!-- <div class="row">
+            <div class="col-sm-6 mb-3">
+                <label>Password</label>
+                <input type="password" name="password" id="pwd" class="input-field">
+            </div>
+            <div class="col-sm-6 mb-3">
+                <label>Repeat Password</label>
+                <input type="password" name="password2" id="cpwd" class="input-field">
+            </div>
+        </div> -->
+        <!-- <div class="mb-3">
+            <label class="option">I agree to the <a href="#">Terms and Conditions</a>
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+            </label>
+        </div> -->
+        {% if doctor %}
+        <div class="mb-3">
+            <label>Your Bio</label>
+            <input type="text" class="input-field" name="bio" required value="{{doctor.bio}}">
+        </div>
+        {% endif %}
+
+
+        <div class="form-field">
+            <input type="submit" value="Update" class="register" name="register">
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock %}

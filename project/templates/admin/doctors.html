@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <div class="section-title mb-4">
+                    <h5 class="position-relative d-inline-block text-primary text-uppercase">Doctors: </h5>
+                    <h5 class="display-5 mb-0">Add Doctor</h1>
+                </div>
+                
+                <form method="post" action="{{url_for('doctors.admin_create_doctors')}}" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <!-- <div class="col-12 col-sm-6">
+                            <select class="form-select bg-light border-0" style="height: 55px;">
+                                <option selected>Select A Service</option>
+                                <option value="1">Service 1</option>
+                                <option value="2">Service 2</option>
+                                <option value="3">Service 3</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <select class="form-select bg-light border-0" style="height: 55px;">
+                                <option selected>Select Doctor</option>
+                                <option value="1">Doctor 1</option>
+                                <option value="2">Doctor 2</option>
+                                <option value="3">Doctor 3</option>
+                            </select>
+                        </div> -->
+                        
+
+                        <div class="col-12 col-sm-6">
+                            <input type="text" name="first_name" class="form-control bg-light border-0" placeholder="First Name" style="height: 55px;">
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <input type="text" name="last_name" class="form-control bg-light border-0" placeholder="Last Name" style="height: 55px;">
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <input type="email" name="email" class="form-control bg-light border-0" placeholder="Email" style="height: 55px;">
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <input type="password" name="password1" class="form-control bg-light border-0" placeholder="password" style="height: 55px;">
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <input type="password" name="password2" class="form-control bg-light border-0" placeholder="Repeat Password" style="height: 55px;">
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <select class="form-select bg-light border-0 mb-3" style="height: 55px;" name="department" required>
+                                <option selected>Select Department</option>
+
+                                {% for department in departments %}
+                                <option value="{{department.id}}">{{department.name}}</option>
+                                {% endfor %}
+
+                                <!-- <option value="2">Service 2</option>
+                                <option value="3">Service 3</option> -->
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <input type="text" name="profession" class="form-control bg-light border-0" placeholder="Profession" style="height: 55px;">
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <input type="text" name="bio" class="form-control bg-light border-0" placeholder="Bio" style="height: 55px;">
+                        </div>
+
+
+
+                        <div class="col-12 col-sm-6">
+                            <!-- <label for="is_top">Profile Img</label> -->
+
+                            <input type="file" name="img" class="form-control bg-light border-0" placeholder="Profile Image" style="height: 55px;">
+                        </div>
+
+                       
+
+                        <div class="col-12 col-sm-6">
+                            <label for="is_top">Is_top</label>
+                            <input type="checkbox" id="is_top" name="is_top" >
+                        </div>
+                        <!-- <div class="col-12 col-sm-6">
+                            <div class="date" id="date1" data-target-input="nearest">
+                                <input type="text"
+                                    class="form-control bg-light border-0 datetimepicker-input"
+                                    placeholder="Appointment Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="time" id="time1" data-target-input="nearest">
+                                <input type="text"
+                                    class="form-control bg-light border-0 datetimepicker-input"
+                                    placeholder="Appointment Time" data-target="#time1" data-toggle="datetimepicker" style="height: 55px;">
+                            </div>
+                        </div> -->
+                        <div class="col-12">
+                            <button class="btn btn-dark w-100 py-3" type="submit">Add Doctor</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                
+            </div>
+
+                <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.1s">
+                    <div class="section-title bg-light rounded h-100 p-5">
+                        <h5 class="position-relative d-inline-block text-primary text-uppercase">Our Doctors</h5>
+                        <h1 class="display-6 mb-4">Meet Our Certified & Experienced Doctors</h1>
+                        <a href="appointment.html" class="btn btn-primary py-3 px-5">Appointment</a>
+                    </div>
+                </div>
+                
+                {% for doctor in doctors %}
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="team-item">
+                        <div class="position-relative rounded-top" style="z-index: 1;">
+                            <img class="img-fluid rounded-top w-100" src="{{doctor.get_img()}}" alt="">
+                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
+
+                                <!-- <a class="btn btn-primary btn-square m-1" href="#"></i></a> -->
+                                <!-- <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a> -->
+                            </div>
+                        </div>
+                        <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
+                            <h4 class="mb-2">{{doctor.first_name}} {{doctor.last_name}}</h4>
+                            <p class="text-primary mb-0">{{doctor.profession}}</p>
+                            <p class="text-primary mb-0">is_top: {{doctor.is_top}}</p>
+
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            
+         
+          
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+            <!-- <div class="col-lg-7 " style="min-height: 500px;">
+                <div class="section-title mb-4">
+                    <h5 class="position-relative d-inline-block text-primary text-uppercase">Services In </h5>
+                </div>
+            
+                <div class="container d-flex justify-content-center align-items-center align-content-center flex-wrap">
+                    {% for service in services %}
+                    <div class="card mx-1 my-1" style="width: 15rem; background-color: azure;">
+                    <div class="card-body" >
+                        <h5 class="card-title"><a href="#">{{service.name}}</a></h5>
+                        
+                    
+                            <a href="{{url_for('services.admin_service_delete', id=service.id)}}" class="card-link btn btn-danger btn-sm">Delete</a>
+                       
+                
+                    </div>
+                    </div>
+                    {% endfor %}
+                </div>
+              </div> -->
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
