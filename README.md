@@ -7,18 +7,24 @@ doctors appointment app
 
 # installing modules
     - run below commands in the root directory of the project
-    `pip install requirements.txt`
+```
+    pip install requirements.txt
+```
 
 # set environment variables
-    `set FLASK_APP environment variables`
-    `set FLASK_APP=manage.py`
-
+```
+    set FLASK_APP environment variables
+    set FLASK_APP=manage.py
+```
 
 # running migrations
-    `flask db init`
-    `flask db migrate -m "initial migrations"`
-    `flask db upgrade`
+```
+    flask db init
+    flask db migrate -m "initial migrations"
+    flask db upgrade
+```
 
 # running the application
-    `python manage.py`
-    
+```
+    python manage.py
+```
