@@ -12,9 +12,14 @@ doctors appointment app
 ```
 
 # set environment variables
+set FLASK_APP environment variables
+## windows
 ```
-    set FLASK_APP environment variables
     set FLASK_APP=manage.py
+```
+## ubuntu
+```
+    export FLASK_APP=manage.py
 ```
 
 # running migrations
